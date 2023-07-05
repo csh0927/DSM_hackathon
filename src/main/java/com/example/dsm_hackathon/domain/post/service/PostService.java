@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -18,5 +19,17 @@ public class PostService {
 
     public Post postDetails(Long id){
         return postRepository.findAllById(id);
+    }
+
+    public List<Post> findPost(String keyword){
+        List<Post> postList = postRepository.findAll();
+
+        List<Post> allPost = postList
+                .stream()
+                .filter(post -> post.getTitle().contains(keyword))
+                .collect(Collectors.toList()
+                );
+
+        return allPost;
     }
 }
