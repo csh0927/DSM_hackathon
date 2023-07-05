@@ -3,6 +3,7 @@ package com.example.dsm_hackathon.domain.post.domain;
 
 import com.example.dsm_hackathon.global.entity.BaseIdEntity;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -39,6 +40,7 @@ public class Post extends BaseIdEntity {
     @Column(nullable = false, length = 10)
     private String field;
 
+    @Builder
     public Post(String title, String foundation, Date startPeriod, Date endPeriod, Integer personnel,
                 Integer amount, String schoolType, String field) {
         this.title = title;

@@ -2,6 +2,7 @@ package com.example.dsm_hackathon.domain.user.domain;
 
 import com.example.dsm_hackathon.global.entity.BaseIdEntity;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -21,7 +22,7 @@ public class User extends BaseIdEntity {
     @Column(nullable = false, length = 30)
     private String email;
 
-    @Column(nullable = false, length = 30)
+    @NotNull
     private String password;
 
     @NotNull
@@ -39,6 +40,7 @@ public class User extends BaseIdEntity {
 
     private Long fileSize;
 
+    @Builder
     public User(String name, String email, String password, Date birth, String inSchool, String schoolName,
                 String originalFileName, String storedFileName, Long fileSize) {
         this.name = name;
@@ -47,6 +49,12 @@ public class User extends BaseIdEntity {
         this.birth = birth;
         this.inSchool = inSchool;
         this.schoolName = schoolName;
+        this.originalFileName = originalFileName;
+        this.storedFileName = storedFileName;
+        this.fileSize = fileSize;
+    }
+
+    public void uploadImages(String originalFileName, String storedFileName, Long fileSize){
         this.originalFileName = originalFileName;
         this.storedFileName = storedFileName;
         this.fileSize = fileSize;
