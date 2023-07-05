@@ -43,6 +43,10 @@ public class SecurityConfig {
                 .antMatchers(HttpMethod.POST, "/email").permitAll()
                 .antMatchers(HttpMethod.PATCH, "/image/{id}").permitAll()
                 .antMatchers(HttpMethod.GET, "/show/{id}").permitAll()
+                .antMatchers(HttpMethod.GET, "/main").permitAll()
+                .antMatchers(HttpMethod.GET, "/details").permitAll()
+                .antMatchers(HttpMethod.GET, "/findPost").permitAll()
+
 
                 .anyRequest().authenticated()
 
