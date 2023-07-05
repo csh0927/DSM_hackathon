@@ -40,9 +40,26 @@ public class Post extends BaseIdEntity {
     @Column(nullable = false, length = 10)
     private String field;
 
+    @Column(nullable = false, length = 100)
+    private String mean;
+
+    @Column(nullable = false, length = 100)
+    private String qualification;
+
+    @Column(nullable = false, length = 100)
+    private String selection;
+
+    @Column(nullable = false, length = 100)
+    private String procedure;
+
+    @Column(nullable = false, length = 100)
+    private String url;
+
     @Builder
-    public Post(String title, String foundation, Date startPeriod, Date endPeriod, Integer personnel,
-                Integer amount, String schoolType, String field) {
+
+    public Post(String title, String foundation, Date startPeriod, Date endPeriod, Integer personnel, Integer amount,
+                String schoolType, String field, String mean, String qualification, String selection, String procedure,
+                String url) {
         this.title = title;
         this.foundation = foundation;
         this.startPeriod = startPeriod;
@@ -51,5 +68,10 @@ public class Post extends BaseIdEntity {
         this.amount = amount;
         this.schoolType = schoolType;
         this.field = field;
+        this.mean = mean;
+        this.qualification = qualification;
+        this.selection = selection;
+        this.procedure = procedure;
+        this.url = url;
     }
 }
