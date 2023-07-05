@@ -53,4 +53,10 @@ public class User extends BaseIdEntity {
         this.storedFileName = storedFileName;
         this.fileSize = fileSize;
     }
+
+    public void uploadImages(String originalFileName, String storedFileName, Long fileSize){
+        this.originalFileName = originalFileName;
+        this.storedFileName = storedFileName;
+        this.fileSize = fileSize;
+    }
 }
