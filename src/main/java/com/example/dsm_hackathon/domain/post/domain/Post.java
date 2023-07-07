@@ -6,6 +6,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,13 +33,16 @@ public class Post extends BaseIdEntity {
     private Integer personnel;
 
     @NotNull
-    private Integer amount;
+    private Long amount;
 
     @Column(nullable = false, length = 10)
     private String schoolType;
 
     @Column(nullable = false, length = 10)
     private String field;
+
+    @Length(max = 45)
+    private String region;
 
     @Column(nullable = false, length = 100)
     private String mean;
@@ -57,8 +61,8 @@ public class Post extends BaseIdEntity {
 
     @Builder
 
-    public Post(String title, String foundation, Date startPeriod, Date endPeriod, Integer personnel, Integer amount,
-                String schoolType, String field, String mean, String qualification, String selection, String procedure,
+    public Post(String title, String foundation, Date startPeriod, Date endPeriod, Integer personnel, Long amount,
+                String schoolType, String field, String region , String mean, String qualification, String selection, String procedure,
                 String url) {
         this.title = title;
         this.foundation = foundation;
@@ -68,6 +72,7 @@ public class Post extends BaseIdEntity {
         this.amount = amount;
         this.schoolType = schoolType;
         this.field = field;
+        this.region = region;
         this.mean = mean;
         this.qualification = qualification;
         this.selection = selection;
