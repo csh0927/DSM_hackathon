@@ -50,8 +50,4 @@ public class AuthDetails implements UserDetails {
         return true;
     }
 
-
-
-
-
 }

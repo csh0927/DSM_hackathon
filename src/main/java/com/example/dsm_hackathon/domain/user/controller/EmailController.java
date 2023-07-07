@@ -15,7 +15,7 @@ public class EmailController {
 
     private final EmailService emailService;
 
-    @PostMapping("/email")
+    @PostMapping("/users/email")
     public String emailConfirm(@RequestParam String email) throws MessagingException, UnsupportedEncodingException {
         String authCode = emailService.sendEmail(email);
 

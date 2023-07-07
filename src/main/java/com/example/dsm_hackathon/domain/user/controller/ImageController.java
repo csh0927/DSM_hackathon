@@ -25,14 +25,14 @@ public class ImageController {
 
     private final ImageService imageService;
 
-    @PatchMapping("/image/{id}")
+    @PatchMapping("users/image/{id}")
     public ResponseEntity<?> addImages(@Validated @RequestParam("files") List<MultipartFile> files, @PathVariable @Valid Long id) throws Exception {
         imageService.add(id, files);
 
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/show/{id}")
+    @GetMapping("users/show/{id}")
     public String getUser(@PathVariable @Valid Long id){
         User user = imageService.findUser(id).orElseThrow(RuntimeException::new);
         String imgPath = user.getStoredFileName();
