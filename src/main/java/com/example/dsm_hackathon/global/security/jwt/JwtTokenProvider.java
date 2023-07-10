@@ -28,7 +28,7 @@ public class JwtTokenProvider {
     private Long accessExp;
 
     private static final String AUTHORIZATION_HEADER = "authorization";
-    private static final String BEARER_PREFIX = "BEARER";
+    private static final String BEARER_PREFIX = "Bearer";
 
     private final AuthDetailsService authDetailsService;
 
@@ -56,6 +56,7 @@ public class JwtTokenProvider {
         return getClaims(token).getSubject();
     }
     private Claims getClaims(String token){
+        System.out.println(Keys.hmacShaKeyFor((secret.getBytes())));
         try {
             return Jwts
                     .parserBuilder()
@@ -65,13 +66,14 @@ public class JwtTokenProvider {
                     .getBody();
         }catch (ExpiredJwtException e){
             throw ExpiredJwtException.EXCEPTION;
-        }catch (Exception e){
+        }catch (Exception e) {
             throw InvalidJwtException.EXCEPTION;
         }
     }
 
     public String resolveToken(HttpServletRequest request){
         String token = request.getHeader(AUTHORIZATION_HEADER);
+        System.out.println(token);
         if(token != null && token.length() > 7 && token.startsWith(BEARER_PREFIX)){
             return token.substring(7);
         }
